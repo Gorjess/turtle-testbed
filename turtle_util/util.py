@@ -11,12 +11,13 @@ class TurtleUtil:
     def __init__(self):
         turtle.setup(800, 600)
         self._t = turtle.Turtle()
+        self._t.hideturtle()
 
     def draw_point(self, color='red', point=None):
         self._t.penup()
         if point:
             self._t.setpos(point[0], point[1])
-        self._t.dot(None, 'red')
+        self._t.dot(None, color)
 
     def mark_home(self):
         cur_pos = self._t.pos()
@@ -25,6 +26,7 @@ class TurtleUtil:
         self._t.setpos(cur_pos)
 
     def draw_shape(self, vertices, color='green'):
+        self._t.color(color)
         self._t.penup()
         for x, y in vertices:
             self._t.setpos(x, y)
