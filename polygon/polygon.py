@@ -1,10 +1,8 @@
-"""
-************ Dancing Bunny ************
-* Created by: Cap Turtle
-* DateTime: 2022/11/13 17:13
-* Desc:
-***************************************
-"""
+# **********************************
+# * Author: Cap Turtle
+# * Date: 11/14/2022 2:16 PM
+# * Description:
+# **********************************
 
 import time
 import turtle
@@ -43,6 +41,40 @@ bool pointInPolygon() {
 
   return oddNodes; }
 """
+
+
+class Polygon:
+    def __init__(self, vertices):
+        self._vertices = vertices
+
+    def vertices(self):
+        return self._vertices
+
+    def pick_edge_point(self, n):
+        """
+        随机获取一个边上的点
+        :param n:
+        :return:
+        """
+        vts = self._vertices
+        length = len(vts)
+        i, j = 0, length - 1
+        picked = 0
+        ps = []
+        while picked < n:
+            if i == length:
+                i = 0
+                j = length - 1
+
+            random.seed(time.time_ns())
+            factor = random.random()
+            vec = vts[j][0] - vts[i][0], vts[j][1] - vts[i][1]
+            ps.append((vec[0] * factor + vts[i][0], vec[1] * factor + vts[i][1]))
+            picked += 1
+            j = i
+            i += 1
+        random.shuffle(ps)
+        return ps
 
 
 def _new_rect(x, y, w, h):
