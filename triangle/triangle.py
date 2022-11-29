@@ -42,7 +42,7 @@ if __name__ == '__main__':
         (350, 50),
         (200, 250)
     ])
-    t.draw_shape(tg.vertices(), color='green')
+    t.draw_polygon(tg.vertices(), color='green')
     t.draw_point(color='orange', point=tg.pick_point())
 
     t.done()
